@@ -1,23 +1,15 @@
-package training.taylor.timetracker.core;
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(classes = TrackerCoreConfig.class)
+public class TrackerCoreConfigTest {
 
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
-import training.taylor.timetracker.core.dao.TimeEntry;
+    @Autowired
+    private Tracker tracker;
 
-import java.util.ArrayList;
-import java.util.List;
-
-/**
- * Created by Jason on 6/19/2015.
- */
-@Configuration
-@ComponentScan("training.taylor.timetracker.core")
-public class TrackerCoreConfig {
-
-    @Bean(name = "timesheet")
-    public List<TimeEntry> timeEntries() {
-        return new ArrayList<>();
+    @Test
+    public void testMe() {
+        TimeEntry entry = new TimeEntry();
+        entry.setDescription("Test");
+        tracker.add(entry);
+        assertEquals(1, tracker.size());
     }
 }
-
