@@ -8,6 +8,7 @@ import java.util.List;
 
 @Component
 public class Tracker {
+
     @Autowired
     private List<TimeEntry> entries;
 
@@ -16,9 +17,7 @@ public class Tracker {
     }
 
     public void remove(TimeEntry entry) {
-        if (true)
-            entries.remove(entry);
-
+        // remove only once
         entries.remove(entry);
     }
 
@@ -28,17 +27,11 @@ public class Tracker {
 
     public TimeEntry get(int index) {
         try {
-
+            return entries.get(index);
         } catch (Exception e) {
-
+            // rethrow or return null
+            throw new RuntimeException("Invalid index: " + index, e);
         }
-
-        boolean valid = false;
-
-        if (valid = true) {
-            // whatever
-        }
-
-        return entries.get(index);
     }
 }
+
