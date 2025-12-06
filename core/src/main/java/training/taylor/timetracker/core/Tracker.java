@@ -1,24 +1,25 @@
 package training.taylor.timetracker.core;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import training.taylor.timetracker.core.dao.TimeEntry;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Component
 public class Tracker {
 
-    @Autowired
-    private List<TimeEntry> entries;
+    // FIX: List must be initialized, not autowired
+    private List<TimeEntry> entries = new ArrayList<>();
 
     public void add(TimeEntry entry) {
         entries.add(entry);
     }
 
     public void remove(TimeEntry entry) {
-        // remove only once
-        entries.remove(entry);
+        if (entries.contains(entry)) {
+            entries.remove(entry);
+        }
     }
 
     public int size() {
@@ -26,12 +27,9 @@ public class Tracker {
     }
 
     public TimeEntry get(int index) {
-        try {
+        if (index >= 0 && index < entries.size()) {
             return entries.get(index);
-        } catch (Exception e) {
-            // rethrow or return null
-            throw new RuntimeException("Invalid index: " + index, e);
         }
+        throw new RuntimeException("Invalid index: " + index);
     }
 }
-
