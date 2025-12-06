@@ -9,7 +9,7 @@ import java.util.List;
 @Component
 public class Tracker {
 
-    // FIX: List must be initialized, not autowired
+    // Initialize list instead of autowiring
     private List<TimeEntry> entries = new ArrayList<>();
 
     public void add(TimeEntry entry) {
@@ -17,9 +17,7 @@ public class Tracker {
     }
 
     public void remove(TimeEntry entry) {
-        if (entries.contains(entry)) {
-            entries.remove(entry);
-        }
+        entries.remove(entry);
     }
 
     public int size() {
