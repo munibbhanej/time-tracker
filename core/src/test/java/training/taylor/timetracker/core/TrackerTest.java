@@ -10,7 +10,7 @@ import training.taylor.timetracker.core.dao.TimeEntry;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
-@RunWith(SpringJUnit4ClassRunner.class)
+@ExtendWith(SpringExtension.class)
 @ContextConfiguration(classes = TrackerCoreConfig.class)
 public class TrackerTest {
 
