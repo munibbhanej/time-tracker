@@ -9,7 +9,6 @@ import java.util.List;
 @Component
 public class Tracker {
 
-    // Initialize list instead of autowiring
     private List<TimeEntry> entries = new ArrayList<>();
 
     public void add(TimeEntry entry) {
