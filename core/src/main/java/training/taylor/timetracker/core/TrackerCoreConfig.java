@@ -1,15 +1,10 @@
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = TrackerCoreConfig.class)
-public class TrackerCoreConfigTest {
+package training.taylor.timetracker.core;
 
-    @Autowired
-    private Tracker tracker;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
 
-    @Test
-    public void testMe() {
-        TimeEntry entry = new TimeEntry();
-        entry.setDescription("Test");
-        tracker.add(entry);
-        assertEquals(1, tracker.size());
-    }
+@Configuration
+@ComponentScan(basePackages = "training.taylor.timetracker.core")
+public class TrackerCoreConfig {
+
 }
